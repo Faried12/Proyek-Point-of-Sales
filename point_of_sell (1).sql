@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 01 Des 2023 pada 16.04
+-- Waktu pembuatan: 06 Des 2023 pada 15.37
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -60,16 +60,18 @@ CREATE TABLE `kasir` (
   `password` varchar(255) NOT NULL,
   `nama_kasir` varchar(255) NOT NULL,
   `no_telpon` varchar(13) NOT NULL,
-  `alamat` varchar(255) NOT NULL
+  `alamat` varchar(255) NOT NULL,
+  `tanggal_lahir` date NOT NULL,
+  `jenis_kelamin` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `kasir`
 --
 
-INSERT INTO `kasir` (`id_kasir`, `password`, `nama_kasir`, `no_telpon`, `alamat`) VALUES
-('K001', '12345678', 'Bangun Panduko Johan', '085921595619', 'Puncangan'),
-('K002', '11223344', 'Muhammad Ilyas', '087733625013', 'Makamhaji');
+INSERT INTO `kasir` (`id_kasir`, `password`, `nama_kasir`, `no_telpon`, `alamat`, `tanggal_lahir`, `jenis_kelamin`) VALUES
+('K001', '12345678', 'Bangun Panduko Johan', '085921595619', 'Puncangan', '2004-05-12', 1),
+('K002', '11223344', 'Muhammad Ilyas', '087733625013', 'Makamhaji', '2004-03-27', 1);
 
 -- --------------------------------------------------------
 
@@ -81,16 +83,18 @@ CREATE TABLE `member` (
   `id_member` varchar(11) NOT NULL,
   `nama_member` varchar(255) NOT NULL,
   `no_telpon` varchar(255) NOT NULL,
-  `alamat` varchar(255) NOT NULL
+  `alamat` varchar(255) NOT NULL,
+  `tanggal_lahir` date NOT NULL,
+  `jenis_kelamin` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `member`
 --
 
-INSERT INTO `member` (`id_member`, `nama_member`, `no_telpon`, `alamat`) VALUES
-('M001', 'Raphael Armado Jose', '089646513759', 'Mahamhaji'),
-('M002', 'Muhammad Farid', '082268597785', 'Mahamhaji');
+INSERT INTO `member` (`id_member`, `nama_member`, `no_telpon`, `alamat`, `tanggal_lahir`, `jenis_kelamin`) VALUES
+('M001', 'Raphael Armado Jose', '089646513759', 'Mahamhaji', '2004-01-09', 1),
+('M002', 'Muhammad Farid', '082268597785', 'Mahamhaji', '2004-01-12', 1);
 
 -- --------------------------------------------------------
 
@@ -103,7 +107,8 @@ CREATE TABLE `pembelian` (
   `jumlah_barang` int(255) NOT NULL,
   `total_harga` int(255) NOT NULL,
   `id_kasir` varchar(11) NOT NULL,
-  `id_member` varchar(11) DEFAULT NULL
+  `id_member` varchar(11) DEFAULT NULL,
+  `tanggal` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
