@@ -41,6 +41,11 @@ public class Cashier extends javax.swing.JFrame {
 
         addEmployee.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         addEmployee.setText("Add Employee");
+        addEmployee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addEmployeeActionPerformed(evt);
+            }
+        });
 
         removeEmployee.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         removeEmployee.setText("Remove Employee");
@@ -113,10 +118,14 @@ public class Cashier extends javax.swing.JFrame {
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
-        Login a = new Login();
+        AddEmployee a = new AddEmployee();
         this.dispose();
         a.setVisible(true);
     }//GEN-LAST:event_backButtonActionPerformed
+
+    private void addEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEmployeeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addEmployeeActionPerformed
 
     /**
      * @param args the command line arguments
