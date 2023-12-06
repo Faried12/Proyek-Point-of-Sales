@@ -32,7 +32,7 @@ public class Cashier extends javax.swing.JFrame {
         removeEmployee = new javax.swing.JButton();
         editEmployee = new javax.swing.JButton();
         listEmployee = new javax.swing.JButton();
-        backButton = new javax.swing.JButton();
+        logOutButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,10 +56,10 @@ public class Cashier extends javax.swing.JFrame {
         listEmployee.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         listEmployee.setText("List of Employee");
 
-        backButton.setText("Log Out");
-        backButton.addActionListener(new java.awt.event.ActionListener() {
+        logOutButton.setText("Log Out");
+        logOutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
+                logOutButtonActionPerformed(evt);
             }
         });
 
@@ -81,7 +81,7 @@ public class Cashier extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(backButton)))
+                        .addComponent(logOutButton)))
                 .addContainerGap(101, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -98,7 +98,7 @@ public class Cashier extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(listEmployee)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                .addComponent(backButton)
+                .addComponent(logOutButton)
                 .addContainerGap())
         );
 
@@ -116,15 +116,18 @@ public class Cashier extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+    private void logOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutButtonActionPerformed
+        // TODO add your handling code here:
+        Login a = new Login();
+        this.dispose();
+        a.setVisible(true);
+    }//GEN-LAST:event_logOutButtonActionPerformed
+
+    private void addEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEmployeeActionPerformed
         // TODO add your handling code here:
         AddEmployee a = new AddEmployee();
         this.dispose();
         a.setVisible(true);
-    }//GEN-LAST:event_backButtonActionPerformed
-
-    private void addEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEmployeeActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_addEmployeeActionPerformed
 
     /**
@@ -164,11 +167,11 @@ public class Cashier extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addEmployee;
-    private javax.swing.JButton backButton;
     private javax.swing.JButton editEmployee;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton listEmployee;
+    private javax.swing.JButton logOutButton;
     private javax.swing.JButton removeEmployee;
     // End of variables declaration//GEN-END:variables
 }
