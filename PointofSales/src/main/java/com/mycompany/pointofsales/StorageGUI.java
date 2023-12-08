@@ -4,27 +4,16 @@
  */
 package com.mycompany.pointofsales;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.table.DefaultTableModel;
-
 /**
  *
- * @author HP
+ * @author bangu
  */
-public class PointOfSalesGUI extends javax.swing.JFrame {
-    String idKasir;
-    String TotalHarga = "0";
-    DefaultTableModel model;
+public class StorageGUI extends javax.swing.JFrame {
 
     /**
-     * Creates new form PointOfSalesGUI
+     * Creates new form StorageGUI
      */
-    public PointOfSalesGUI() {
+    public StorageGUI() {
         initComponents();
     }
 
@@ -42,14 +31,11 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         tBarang = new javax.swing.JTextField();
         tJumlah = new javax.swing.JTextField();
-        tMemberID = new javax.swing.JTextField();
         bTambah = new javax.swing.JButton();
         bMember = new javax.swing.JButton();
         tTotalKeseluruhan = new javax.swing.JTextField();
-        bReceipt = new javax.swing.JButton();
         bKasir = new javax.swing.JButton();
         namaKasir = new javax.swing.JLabel();
         lAnnouncer = new javax.swing.JLabel();
@@ -95,8 +81,6 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
 
         jLabel3.setText("Jumlah");
 
-        jLabel4.setText("Member ID");
-
         bTambah.setText("Tambah");
         bTambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,13 +100,6 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
         tTotalKeseluruhan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tTotalKeseluruhanActionPerformed(evt);
-            }
-        });
-
-        bReceipt.setText("Struk");
-        bReceipt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bReceiptActionPerformed(evt);
             }
         });
 
@@ -156,19 +133,16 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(bKasir, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
+                                .addGap(77, 77, 77)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lAnnouncer)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(bReceipt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(tJumlah, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                                        .addComponent(tMemberID, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
                                         .addComponent(bTambah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(bMember, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -187,17 +161,11 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tJumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tMemberID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(28, 28, 28)
                         .addComponent(bTambah)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bReceipt)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(35, 35, 35)
                         .addComponent(lAnnouncer)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                         .addComponent(namaKasir))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -210,10 +178,6 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tTotalKeseluruhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tTotalKeseluruhanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tTotalKeseluruhanActionPerformed
-
     private void bTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTambahActionPerformed
         try {
             if (Sales.checkStock(tBarang.getText(), tJumlah.getText()) == 1){
@@ -224,7 +188,6 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
                 String th = Sales.totalHarga(tJumlah.getText(), tBarang.getText());
                 TotalHarga = String.valueOf(Integer.parseInt(th) + Integer.parseInt(TotalHarga));
                 tTotalKeseluruhan.setText(TotalHarga);
-                
 
                 //add data to tabel
                 model = (DefaultTableModel)tabelBarang.getModel();
@@ -233,8 +196,7 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
             }else{
                 lAnnouncer.setText("Not Enough Stock");
             }
-            
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(PointOfSalesGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -244,9 +206,9 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_bMemberActionPerformed
 
-    private void bReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bReceiptActionPerformed
+    private void tTotalKeseluruhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tTotalKeseluruhanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bReceiptActionPerformed
+    }//GEN-LAST:event_tTotalKeseluruhanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -265,20 +227,20 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PointOfSalesGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StorageGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PointOfSalesGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StorageGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PointOfSalesGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StorageGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PointOfSalesGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StorageGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PointOfSalesGUI().setVisible(true);
+                new StorageGUI().setVisible(true);
             }
         });
     }
@@ -286,18 +248,15 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bKasir;
     private javax.swing.JButton bMember;
-    private javax.swing.JButton bReceipt;
     private javax.swing.JButton bTambah;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lAnnouncer;
     private javax.swing.JLabel namaKasir;
     private javax.swing.JTextField tBarang;
     private javax.swing.JTextField tJumlah;
-    private javax.swing.JTextField tMemberID;
     private javax.swing.JTextField tTotalKeseluruhan;
     private javax.swing.JTable tabelBarang;
     // End of variables declaration//GEN-END:variables
