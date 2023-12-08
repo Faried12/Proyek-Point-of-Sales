@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 06 Des 2023 pada 15.37
+-- Waktu pembuatan: 08 Des 2023 pada 11.49
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -39,15 +39,15 @@ CREATE TABLE `barang` (
 --
 
 INSERT INTO `barang` (`id_barang`, `nama_barang`, `harga_barang`, `stok_barang`) VALUES
-('B001', 'Buku', 57000, 20),
-('B002', 'Correction Tape', 10000, 30),
-('B003', 'Gunting', 10000, 20),
-('B004', 'Penghapus', 1000, 40),
-('B005', 'Pensil', 3000, 42),
-('B006', 'Pensil Warna', 16000, 10),
-('B007', 'Penggaris', 6000, 15),
-('B008', 'Pulpen', 3000, 48),
-('B009', 'Spidol Papan Tulis', 10000, 20);
+('B01', 'Buku', 57000, 20),
+('B02', 'Correction Tape', 10000, 30),
+('B03', 'Gunting', 10000, 20),
+('B04', 'Penghapus', 1000, 40),
+('B05', 'Pensil', 3000, 42),
+('B06', 'Pensil Warna', 16000, 10),
+('B07', 'Penggaris', 6000, 15),
+('B08', 'Pulpen', 3000, 48),
+('B09', 'Spidol Papan Tulis', 10000, 20);
 
 -- --------------------------------------------------------
 

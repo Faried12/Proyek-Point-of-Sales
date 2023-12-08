@@ -118,7 +118,7 @@ public class Cashier extends javax.swing.JFrame {
 
     private void logOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutButtonActionPerformed
         // TODO add your handling code here:
-        Login a = new Login();
+        LoginGUI a = new LoginGUI();
         this.dispose();
         a.setVisible(true);
     }//GEN-LAST:event_logOutButtonActionPerformed
