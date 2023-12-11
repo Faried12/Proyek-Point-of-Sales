@@ -20,6 +20,7 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
     String idKasir;
     String TotalHarga = "0";
     DefaultTableModel model;
+    boolean  manager;
 
     /**
      * Creates new form PointOfSalesGUI
@@ -27,7 +28,12 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
     public PointOfSalesGUI() {
         initComponents();
     }
-
+    public void setManager(boolean m){
+        this.manager = m;
+    }
+    public void setID(String k){
+        this.idKasir = k;
+     }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,6 +59,7 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
         bKasir = new javax.swing.JButton();
         namaKasir = new javax.swing.JLabel();
         lAnnouncer = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -127,8 +134,16 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
         });
 
         bKasir.setText("Kasir");
+        bKasir.setVisible(this.manager);
+        bKasir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bKasirActionPerformed(evt);
+            }
+        });
 
         namaKasir.setText(idKasir);
+
+        jButton1.setText("Storage");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -151,7 +166,7 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
                         .addComponent(tTotalKeseluruhan, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(namaKasir)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(bKasir, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -164,10 +179,11 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
                                         .addComponent(bReceipt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(tJumlah, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
                                         .addComponent(tMemberID, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                                        .addComponent(bTambah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                        .addComponent(bTambah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bMember, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(bMember, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -201,6 +217,8 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
                         .addComponent(namaKasir))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(bMember)
                             .addComponent(bKasir))))
@@ -246,7 +264,12 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
 
     private void bReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bReceiptActionPerformed
         // TODO add your handling code here:
+        System.out.println(this.manager);
     }//GEN-LAST:event_bReceiptActionPerformed
+
+    private void bKasirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bKasirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bKasirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -279,15 +302,17 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new PointOfSalesGUI().setVisible(true);
+
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bKasir;
+    private static javax.swing.JButton bKasir;
     private javax.swing.JButton bMember;
     private javax.swing.JButton bReceipt;
     private javax.swing.JButton bTambah;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

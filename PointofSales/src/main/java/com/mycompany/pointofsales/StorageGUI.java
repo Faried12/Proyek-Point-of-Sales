@@ -28,41 +28,37 @@ public class StorageGUI extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelBarang = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         tBarang = new javax.swing.JTextField();
         tJumlah = new javax.swing.JTextField();
         bTambah = new javax.swing.JButton();
         bMember = new javax.swing.JButton();
-        tTotalKeseluruhan = new javax.swing.JTextField();
-        bKasir = new javax.swing.JButton();
-        namaKasir = new javax.swing.JLabel();
         lAnnouncer = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         tabelBarang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Barang", "Jumlah", "Total"
+                "Barang", "Stock", "Harga Satuan", "Barang Terjual"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -74,8 +70,6 @@ public class StorageGUI extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(tabelBarang);
-
-        jLabel1.setText("Total Keseluruhan");
 
         jLabel2.setText("Barang");
 
@@ -95,18 +89,6 @@ public class StorageGUI extends javax.swing.JFrame {
             }
         });
 
-        tTotalKeseluruhan.setEditable(false);
-        tTotalKeseluruhan.setText(TotalHarga);
-        tTotalKeseluruhan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tTotalKeseluruhanActionPerformed(evt);
-            }
-        });
-
-        bKasir.setText("Kasir");
-
-        namaKasir.setText(idKasir);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -122,28 +104,20 @@ public class StorageGUI extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(77, 77, 77)
                                 .addComponent(tBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tTotalKeseluruhan, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(namaKasir)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(bKasir, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGap(77, 77, 77)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lAnnouncer)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(tJumlah, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
                                         .addComponent(bTambah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bMember, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1))
-                .addContainerGap())
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 175, Short.MAX_VALUE)
+                                .addComponent(bMember, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,26 +126,21 @@ public class StorageGUI extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
                     .addComponent(jLabel2)
-                    .addComponent(tBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tTotalKeseluruhan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tJumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
-                        .addGap(28, 28, 28)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(bTambah)
-                        .addGap(35, 35, 35)
+                        .addGap(57, 57, 57)
                         .addComponent(lAnnouncer)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                        .addComponent(namaKasir))
+                        .addGap(0, 28, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(bMember)
-                            .addComponent(bKasir))))
+                        .addComponent(bMember)))
                 .addContainerGap())
         );
 
@@ -179,36 +148,12 @@ public class StorageGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTambahActionPerformed
-        try {
-            if (Sales.checkStock(tBarang.getText(), tJumlah.getText()) == 1){
-                //add data to database
-                Sales.addSales(idKasir, tMemberID.getText(), tBarang.getText(), tJumlah.getText());
-
-                //add total harga
-                String th = Sales.totalHarga(tJumlah.getText(), tBarang.getText());
-                TotalHarga = String.valueOf(Integer.parseInt(th) + Integer.parseInt(TotalHarga));
-                tTotalKeseluruhan.setText(TotalHarga);
-
-                //add data to tabel
-                model = (DefaultTableModel)tabelBarang.getModel();
-                Object obj [] = {tBarang.getText(), tJumlah.getText(), th};
-                model.addRow(obj);
-            }else{
-                lAnnouncer.setText("Not Enough Stock");
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(PointOfSalesGUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
+ 
     }//GEN-LAST:event_bTambahActionPerformed
 
     private void bMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bMemberActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bMemberActionPerformed
-
-    private void tTotalKeseluruhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tTotalKeseluruhanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tTotalKeseluruhanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,18 +191,14 @@ public class StorageGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bKasir;
     private javax.swing.JButton bMember;
     private javax.swing.JButton bTambah;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lAnnouncer;
-    private javax.swing.JLabel namaKasir;
     private javax.swing.JTextField tBarang;
     private javax.swing.JTextField tJumlah;
-    private javax.swing.JTextField tTotalKeseluruhan;
     private javax.swing.JTable tabelBarang;
     // End of variables declaration//GEN-END:variables
 }

@@ -133,10 +133,20 @@ public class LoginGUI extends javax.swing.JFrame {
                 PointOfSalesGUI a = new PointOfSalesGUI();
                 this.dispose();
                 a.setVisible(true);
-                a.idKasir = tUsername.getText();
-            }else{
+                a.setID(tUsername.getText());
+                a.setManager(true);
+                System.out.println(a.manager);
+            }else if(log == 2){
+                PointOfSalesGUI a = new PointOfSalesGUI();
+                this.dispose();
+                a.setVisible(true);
+                a.setID(tUsername.getText());
+                a.setManager(false);
+            }
+            else{
                 lAnnouncer.setText("Username or Password is incorect");
             }
+            
         } catch (SQLException ex) {
             Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
         }

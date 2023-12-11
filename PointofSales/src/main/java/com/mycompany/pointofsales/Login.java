@@ -31,10 +31,13 @@ public class Login {
             user = rs1.getString("id_kasir");
             pass = rs1.getString("password");
         }
-        if (user == "" || password == "" || !password.equals(pass)){
+        if (username.equals("admin") && password.equals("admin")){
+            return 1;
+        }
+        else if (user == "" || password == "" || !password.equals(pass)){
             return 0;
         }else{
-            return 1;
+            return 2;
         }
     }
 }
