@@ -25,18 +25,20 @@ public class Login {
         //take harga_barang from database
         String user = "";
         String pass = "";
+        String m    = "";
         String query1 = "SELECT * FROM kasir WHERE id_kasir = '"+username+"';";
         ResultSet rs1 = statement.executeQuery(query1);
         while (rs1.next()) {
             user = rs1.getString("id_kasir");
             pass = rs1.getString("password");
+            m = rs1.getString("manager");
         }
-        if (username.equals("admin") && password.equals("admin")){
+        if (user == "" || password == "" || !password.equals(pass)){
+            return 0;
+        }else if(m.equals("1")){
             return 1;
         }
-        else if (user == "" || password == "" || !password.equals(pass)){
-            return 0;
-        }else{
+        else{
             return 2;
         }
     }

@@ -28,12 +28,9 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
     public PointOfSalesGUI() {
         initComponents();
     }
-    public void setManager(boolean m){
-        this.manager = m;
+    public void setAttrib(){
+       
     }
-    public void setID(String k){
-        this.idKasir = k;
-     }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -57,7 +54,7 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
         tTotalKeseluruhan = new javax.swing.JTextField();
         bReceipt = new javax.swing.JButton();
         bKasir = new javax.swing.JButton();
-        namaKasir = new javax.swing.JLabel();
+        tNamaKasir = new javax.swing.JLabel();
         lAnnouncer = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
@@ -65,15 +62,7 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
 
         tabelBarang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Barang", "Jumlah", "Total"
@@ -134,14 +123,12 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
         });
 
         bKasir.setText("Kasir");
-        bKasir.setVisible(this.manager);
+        bKasir.setVisible(manager);
         bKasir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bKasirActionPerformed(evt);
             }
         });
-
-        namaKasir.setText(idKasir);
 
         jButton1.setText("Storage");
 
@@ -167,7 +154,7 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(namaKasir)
+                                .addComponent(tNamaKasir)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(bKasir, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -213,8 +200,8 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
                         .addComponent(bReceipt)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lAnnouncer)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                        .addComponent(namaKasir))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                        .addComponent(tNamaKasir))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton1)
@@ -234,6 +221,9 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
 
     private void bTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTambahActionPerformed
         try {
+            tNamaKasir.setText(idKasir);
+            bKasir.setVisible(manager);
+
             if (Sales.checkStock(tBarang.getText(), tJumlah.getText()) == 1){
                 //add data to database
                 Sales.addSales(idKasir, tMemberID.getText(), tBarang.getText(), tJumlah.getText());
@@ -242,12 +232,12 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
                 String th = Sales.totalHarga(tJumlah.getText(), tBarang.getText());
                 TotalHarga = String.valueOf(Integer.parseInt(th) + Integer.parseInt(TotalHarga));
                 tTotalKeseluruhan.setText(TotalHarga);
-                
-
+   
                 //add data to tabel
                 model = (DefaultTableModel)tabelBarang.getModel();
                 Object obj [] = {tBarang.getText(), tJumlah.getText(), th};
                 model.addRow(obj);
+                System.out.println(idKasir);
             }else{
                 lAnnouncer.setText("Not Enough Stock");
             }
@@ -308,7 +298,7 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private static javax.swing.JButton bKasir;
+    private javax.swing.JButton bKasir;
     private javax.swing.JButton bMember;
     private javax.swing.JButton bReceipt;
     private javax.swing.JButton bTambah;
@@ -319,10 +309,10 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lAnnouncer;
-    private javax.swing.JLabel namaKasir;
     private javax.swing.JTextField tBarang;
     private javax.swing.JTextField tJumlah;
     private javax.swing.JTextField tMemberID;
+    private javax.swing.JLabel tNamaKasir;
     private javax.swing.JTextField tTotalKeseluruhan;
     private javax.swing.JTable tabelBarang;
     // End of variables declaration//GEN-END:variables

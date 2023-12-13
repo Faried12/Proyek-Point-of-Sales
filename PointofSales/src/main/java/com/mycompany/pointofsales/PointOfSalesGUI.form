@@ -45,7 +45,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="namaKasir" min="-2" max="-2" attributes="0"/>
+                              <Component id="tNamaKasir" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="bKasir" min="-2" pref="116" max="-2" attributes="0"/>
                           </Group>
@@ -104,8 +104,8 @@
                       <Component id="bReceipt" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lAnnouncer" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="25" max="32767" attributes="0"/>
-                      <Component id="namaKasir" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="41" max="32767" attributes="0"/>
+                      <Component id="tNamaKasir" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -133,7 +133,7 @@
         <Component class="javax.swing.JTable" name="tabelBarang">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="3" rowCount="9">
+              <Table columnCount="3" rowCount="0">
                 <Column editable="false" title="Barang" type="java.lang.String"/>
                 <Column editable="false" title="Jumlah" type="java.lang.Integer"/>
                 <Column editable="false" title="Total" type="java.lang.Integer"/>
@@ -206,21 +206,16 @@
     </Component>
     <Component class="javax.swing.JButton" name="bKasir">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Kasir" postCode="bKasir.setVisible(this.manager);"/>
+        <Property name="text" type="java.lang.String" value="Kasir"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bKasirActionPerformed"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="bKasir.setVisible(manager);"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JLabel" name="namaKasir">
-      <Properties>
-        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="idKasir" type="code"/>
-        </Property>
-      </Properties>
+    <Component class="javax.swing.JLabel" name="tNamaKasir">
     </Component>
     <Component class="javax.swing.JLabel" name="lAnnouncer">
     </Component>

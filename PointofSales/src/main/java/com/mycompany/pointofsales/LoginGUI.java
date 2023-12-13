@@ -36,9 +36,9 @@ public class LoginGUI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         tUsername = new javax.swing.JTextField();
-        tPassword = new javax.swing.JTextField();
         backButton = new javax.swing.JButton();
         lAnnouncer = new javax.swing.JLabel();
+        tPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,12 +60,14 @@ public class LoginGUI extends javax.swing.JFrame {
 
         backButton.setText("Back");
 
+        tPassword.setText("jPasswordField1");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(101, 101, 101)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -84,7 +86,7 @@ public class LoginGUI extends javax.swing.JFrame {
                         .addGap(84, 84, 84)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(tPassword))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(95, 95, 95)
                         .addComponent(lAnnouncer)))
@@ -100,14 +102,14 @@ public class LoginGUI extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(tUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(tPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(confirmButton)
                 .addGap(1, 1, 1)
                 .addComponent(lAnnouncer)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addComponent(backButton)
                 .addGap(11, 11, 11))
         );
@@ -133,15 +135,15 @@ public class LoginGUI extends javax.swing.JFrame {
                 PointOfSalesGUI a = new PointOfSalesGUI();
                 this.dispose();
                 a.setVisible(true);
-                a.setID(tUsername.getText());
-                a.setManager(true);
-                System.out.println(a.manager);
+                a.idKasir = tUsername.getText();
+                a.manager = true;
+
             }else if(log == 2){
                 PointOfSalesGUI a = new PointOfSalesGUI();
                 this.dispose();
                 a.setVisible(true);
-                a.setID(tUsername.getText());
-                a.setManager(false);
+                a.idKasir = tUsername.getText();
+                a.manager = false;
             }
             else{
                 lAnnouncer.setText("Username or Password is incorect");
@@ -197,7 +199,7 @@ public class LoginGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lAnnouncer;
-    private javax.swing.JTextField tPassword;
+    private javax.swing.JPasswordField tPassword;
     private javax.swing.JTextField tUsername;
     // End of variables declaration//GEN-END:variables
 }
