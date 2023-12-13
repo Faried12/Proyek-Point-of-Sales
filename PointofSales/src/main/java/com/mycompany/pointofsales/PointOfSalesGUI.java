@@ -20,6 +20,7 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
     String TotalHarga = "0";
     DefaultTableModel model;
     String idKasir;
+    String namaKasir;
     boolean  manager;
 
     /**
@@ -43,20 +44,22 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
         Statement statement = connection.createStatement();
         
         //take harga_barang from database
+        String id = "";
         String user ="";
         String m = "";
         String query1 = "SELECT * FROM kasir WHERE log=1;";
         ResultSet rs1 = statement.executeQuery(query1);
         while (rs1.next()) {
+            id = rs1.getString("id_kasir");
             user = rs1.getString("nama_kasir");
             m = rs1.getString("manager");
         }
         if(m.equals("1")){
             this.manager = true;
         }
-        System.out.println(user);
-        idKasir = user;
-        tNamaKasir.setText(idKasir);
+        namaKasir = user;
+        idKasir = id;
+        tNamaKasir.setText(namaKasir);
         bKasir.setVisible(manager);
         
     }
@@ -188,7 +191,7 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
             }
         });
 
-        tNamaKasir.setText(idKasir);
+        tNamaKasir.setText(namaKasir);
 
         bStorage.setText("Storage");
         bStorage.addActionListener(new java.awt.event.ActionListener() {
@@ -276,7 +279,7 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
                     .addComponent(bTambah))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tNamaKasir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(lAnnouncer)
                 .addContainerGap())
         );
@@ -291,11 +294,8 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
     private void bTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTambahActionPerformed
         try {
             if (Sales.checkStock(tBarang.getText(), tJumlah.getText()) == 1){
-                //add data to database
-                Sales.addSales(idKasir, tMemberID.getText(), tBarang.getText(), tJumlah.getText());
-
                 //add total harga
-                String th = Sales.totalHarga(tJumlah.getText(), tBarang.getText());
+                String th = Sales.totalHarga(tJumlah.getText(), tBarang.getText(), tMemberID.getText());
                 TotalHarga = String.valueOf(Integer.parseInt(th) + Integer.parseInt(TotalHarga));
                 tTotalKeseluruhan.setText(TotalHarga);
    
@@ -306,7 +306,8 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
             }else{
                 lAnnouncer.setText("Not Enough Stock");
             }
-            
+            tBarang.setText("");
+            tJumlah.setText("");
             
         } catch (SQLException ex) {
             Logger.getLogger(PointOfSalesGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -314,12 +315,21 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_bTambahActionPerformed
 
     private void bMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bMemberActionPerformed
-
+        Member a = new Member();
+        this.dispose();
+        a.setVisible(true);
     }//GEN-LAST:event_bMemberActionPerformed
 
     private void bReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bReceiptActionPerformed
-        // TODO add your handling code here:
-        tNamaKasir.setText("pantek");
+        try {
+            Sales.addSales(tTotalKeseluruhan.getText(), tMemberID.getText(), idKasir);
+            model.setRowCount(0);
+            tMemberID.setText("");
+            TotalHarga = "0";
+            tTotalKeseluruhan.setText(TotalHarga);
+        } catch (SQLException ex) {
+            Logger.getLogger(PointOfSalesGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_bReceiptActionPerformed
 
     private void bKasirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bKasirActionPerformed
@@ -335,9 +345,7 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_bStorageActionPerformed
 
     private void tMemberIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tMemberIDActionPerformed
-        Member a = new Member();
-        this.dispose();
-        a.setVisible(true);
+
     }//GEN-LAST:event_tMemberIDActionPerformed
 
     private void tJumlahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tJumlahActionPerformed

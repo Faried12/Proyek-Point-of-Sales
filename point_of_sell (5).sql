@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 13 Des 2023 pada 18.46
+-- Waktu pembuatan: 13 Des 2023 pada 22.11
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -39,13 +39,13 @@ CREATE TABLE `barang` (
 --
 
 INSERT INTO `barang` (`id_barang`, `nama_barang`, `harga_barang`, `stok_barang`) VALUES
-('B01', 'Buku', 57000, 14),
-('B02', 'Correction Tape', 10000, 29),
-('B03', 'Gunting', 10000, 17),
+('B01', 'Buku', 57000, 13),
+('B02', 'Correction Tape', 10000, 25),
+('B03', 'Gunting', 10000, 15),
 ('B04', 'Penghapus', 1000, 37),
-('B05', 'Pensil', 3000, 42),
+('B05', 'Pensil', 3000, 39),
 ('B06', 'Pensil Warna', 16000, 9),
-('B07', 'Penggaris', 6000, 15),
+('B07', 'Penggaris', 6000, 13),
 ('B08', 'Pulpen', 3000, 46),
 ('B09', 'Spidol Papan Tulis', 10000, 20);
 
@@ -73,7 +73,7 @@ CREATE TABLE `kasir` (
 
 INSERT INTO `kasir` (`id_kasir`, `password`, `nama_kasir`, `no_telpon`, `alamat`, `tanggal_lahir`, `jenis_kelamin`, `manager`, `log`) VALUES
 ('admin', 'admin', 'admin', '-', '-', '2004-03-27', 1, 1, 0),
-('K001', '12345678', 'Bangun Panduko Johan', '085921595619', 'Puncangan', '2004-05-12', 1, 0, 1),
+('K001', '12345678', 'Bangun Panduko Johan', '085921595619', 'Puncangan', '2004-05-12', 1, 0, 0),
 ('K002', '11223344', 'Muhammad Ilyas', '087733625013', 'Makamhaji', '2004-03-27', 1, 0, 0);
 
 -- --------------------------------------------------------
@@ -102,33 +102,24 @@ INSERT INTO `member` (`id_member`, `nama_member`, `no_telpon`, `alamat`, `tangga
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pembelian`
+-- Struktur dari tabel `sales`
 --
 
-CREATE TABLE `pembelian` (
-  `id_barang` varchar(11) NOT NULL,
-  `jumlah_barang` int(255) NOT NULL,
-  `total_harga` int(255) NOT NULL,
-  `id_kasir` varchar(11) NOT NULL,
+CREATE TABLE `sales` (
+  `id_struk` varchar(11) NOT NULL,
+  `tanggal` date NOT NULL,
+  `total_keseluruhan` int(255) NOT NULL,
   `id_member` varchar(11) DEFAULT NULL,
-  `tanggal` date NOT NULL
+  `id_kasir` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `pembelian`
+-- Dumping data untuk tabel `sales`
 --
 
-INSERT INTO `pembelian` (`id_barang`, `jumlah_barang`, `total_harga`, `id_kasir`, `id_member`, `tanggal`) VALUES
-('B01', 1, 57000, 'admin', NULL, '2023-12-13'),
-('B03', 1, 10000, 'admin', NULL, '2023-12-13'),
-('B06', 1, 16000, 'admin', NULL, '2023-12-13'),
-('B08', 2, 6000, 'admin', NULL, '2023-12-13'),
-('B01', 1, 57000, 'admin', NULL, '2023-12-13'),
-('B02', 1, 10000, 'admin', NULL, '2023-12-13'),
-('B04', 1, 1000, 'admin', NULL, '2023-12-13'),
-('B01', 1, 57000, 'admin', NULL, '2023-12-13'),
-('B04', 2, 2000, 'admin', NULL, '2023-12-13'),
-('B03', 2, 20000, 'admin', NULL, '2023-12-13');
+INSERT INTO `sales` (`id_struk`, `tanggal`, `total_keseluruhan`, `id_member`, `id_kasir`) VALUES
+('S001', '2023-12-14', 87000, NULL, 'admin'),
+('S003', '2023-12-14', 19800, 'M001', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -153,11 +144,11 @@ ALTER TABLE `member`
   ADD PRIMARY KEY (`id_member`);
 
 --
--- Indeks untuk tabel `pembelian`
+-- Indeks untuk tabel `sales`
 --
-ALTER TABLE `pembelian`
-  ADD KEY `id_barang` (`id_barang`,`id_kasir`,`id_member`),
-  ADD KEY `id_member` (`id_member`),
+ALTER TABLE `sales`
+  ADD PRIMARY KEY (`id_struk`),
+  ADD KEY `id_member` (`id_member`,`id_kasir`),
   ADD KEY `id_kasir` (`id_kasir`);
 
 --
@@ -165,12 +156,11 @@ ALTER TABLE `pembelian`
 --
 
 --
--- Ketidakleluasaan untuk tabel `pembelian`
+-- Ketidakleluasaan untuk tabel `sales`
 --
-ALTER TABLE `pembelian`
-  ADD CONSTRAINT `pembelian_ibfk_1` FOREIGN KEY (`id_member`) REFERENCES `member` (`id_member`),
-  ADD CONSTRAINT `pembelian_ibfk_2` FOREIGN KEY (`id_kasir`) REFERENCES `kasir` (`id_kasir`),
-  ADD CONSTRAINT `pembelian_ibfk_3` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`);
+ALTER TABLE `sales`
+  ADD CONSTRAINT `sales_ibfk_1` FOREIGN KEY (`id_kasir`) REFERENCES `kasir` (`id_kasir`),
+  ADD CONSTRAINT `sales_ibfk_2` FOREIGN KEY (`id_member`) REFERENCES `member` (`id_member`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

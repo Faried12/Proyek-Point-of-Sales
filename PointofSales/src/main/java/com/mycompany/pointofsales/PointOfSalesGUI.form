@@ -90,7 +90,7 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          <Component id="tNamaKasir" min="-2" max="-2" attributes="0"/>
+                          <Component id="tNamaKasir" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -131,7 +131,7 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="tNamaKasir" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="16" max="32767" attributes="0"/>
               <Component id="lAnnouncer" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -240,7 +240,7 @@
     <Component class="javax.swing.JLabel" name="tNamaKasir">
       <Properties>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="idKasir" type="code"/>
+          <Connection code="namaKasir" type="code"/>
         </Property>
       </Properties>
     </Component>
