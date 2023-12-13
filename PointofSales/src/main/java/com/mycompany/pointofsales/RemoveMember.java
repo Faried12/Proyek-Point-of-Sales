@@ -112,9 +112,7 @@ public class RemoveMember extends javax.swing.JFrame {
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
-        Manager a = new Manager();
-        this.dispose();
-        a.setVisible(true);
+
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed

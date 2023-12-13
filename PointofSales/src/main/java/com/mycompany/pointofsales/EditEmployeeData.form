@@ -65,13 +65,11 @@
                           </Group>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="nama" pref="193" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jk" max="32767" attributes="0"/>
-                                  <Component id="no" alignment="0" pref="193" max="32767" attributes="0"/>
-                                  <Component id="alamat" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="no1" alignment="0" pref="193" max="32767" attributes="0"/>
-                                  <Component id="nama1" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="jk" max="32767" attributes="0"/>
+                              <Component id="no" alignment="0" pref="193" max="32767" attributes="0"/>
+                              <Component id="alamat" alignment="0" max="32767" attributes="0"/>
+                              <Component id="no1" alignment="0" pref="193" max="32767" attributes="0"/>
+                              <Component id="nama1" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">

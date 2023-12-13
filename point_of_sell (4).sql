@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Des 2023 pada 11.49
+-- Waktu pembuatan: 13 Des 2023 pada 18.46
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -39,14 +39,14 @@ CREATE TABLE `barang` (
 --
 
 INSERT INTO `barang` (`id_barang`, `nama_barang`, `harga_barang`, `stok_barang`) VALUES
-('B01', 'Buku', 57000, 20),
-('B02', 'Correction Tape', 10000, 30),
-('B03', 'Gunting', 10000, 20),
-('B04', 'Penghapus', 1000, 40),
+('B01', 'Buku', 57000, 14),
+('B02', 'Correction Tape', 10000, 29),
+('B03', 'Gunting', 10000, 17),
+('B04', 'Penghapus', 1000, 37),
 ('B05', 'Pensil', 3000, 42),
-('B06', 'Pensil Warna', 16000, 10),
+('B06', 'Pensil Warna', 16000, 9),
 ('B07', 'Penggaris', 6000, 15),
-('B08', 'Pulpen', 3000, 48),
+('B08', 'Pulpen', 3000, 46),
 ('B09', 'Spidol Papan Tulis', 10000, 20);
 
 -- --------------------------------------------------------
@@ -62,16 +62,19 @@ CREATE TABLE `kasir` (
   `no_telpon` varchar(13) NOT NULL,
   `alamat` varchar(255) NOT NULL,
   `tanggal_lahir` date NOT NULL,
-  `jenis_kelamin` tinyint(1) NOT NULL
+  `jenis_kelamin` tinyint(1) NOT NULL,
+  `manager` tinyint(1) DEFAULT NULL,
+  `log` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `kasir`
 --
 
-INSERT INTO `kasir` (`id_kasir`, `password`, `nama_kasir`, `no_telpon`, `alamat`, `tanggal_lahir`, `jenis_kelamin`) VALUES
-('K001', '12345678', 'Bangun Panduko Johan', '085921595619', 'Puncangan', '2004-05-12', 1),
-('K002', '11223344', 'Muhammad Ilyas', '087733625013', 'Makamhaji', '2004-03-27', 1);
+INSERT INTO `kasir` (`id_kasir`, `password`, `nama_kasir`, `no_telpon`, `alamat`, `tanggal_lahir`, `jenis_kelamin`, `manager`, `log`) VALUES
+('admin', 'admin', 'admin', '-', '-', '2004-03-27', 1, 1, 0),
+('K001', '12345678', 'Bangun Panduko Johan', '085921595619', 'Puncangan', '2004-05-12', 1, 0, 1),
+('K002', '11223344', 'Muhammad Ilyas', '087733625013', 'Makamhaji', '2004-03-27', 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -110,6 +113,22 @@ CREATE TABLE `pembelian` (
   `id_member` varchar(11) DEFAULT NULL,
   `tanggal` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `pembelian`
+--
+
+INSERT INTO `pembelian` (`id_barang`, `jumlah_barang`, `total_harga`, `id_kasir`, `id_member`, `tanggal`) VALUES
+('B01', 1, 57000, 'admin', NULL, '2023-12-13'),
+('B03', 1, 10000, 'admin', NULL, '2023-12-13'),
+('B06', 1, 16000, 'admin', NULL, '2023-12-13'),
+('B08', 2, 6000, 'admin', NULL, '2023-12-13'),
+('B01', 1, 57000, 'admin', NULL, '2023-12-13'),
+('B02', 1, 10000, 'admin', NULL, '2023-12-13'),
+('B04', 1, 1000, 'admin', NULL, '2023-12-13'),
+('B01', 1, 57000, 'admin', NULL, '2023-12-13'),
+('B04', 2, 2000, 'admin', NULL, '2023-12-13'),
+('B03', 2, 20000, 'admin', NULL, '2023-12-13');
 
 --
 -- Indexes for dumped tables

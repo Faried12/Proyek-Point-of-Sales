@@ -6,14 +6,14 @@ package com.mycompany.pointofsales;
 
 /**
  *
- * @author bangu
+ * @author HP
  */
-public class Cashier extends javax.swing.JFrame {
+public class Member extends javax.swing.JFrame {
 
     /**
-     * Creates new form Cashier
+     * Creates new form Member
      */
-    public Cashier() {
+    public Member() {
         initComponents();
     }
 
@@ -37,7 +37,7 @@ public class Cashier extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("Cashier");
+        jLabel1.setText("Member");
 
         bBack.setText("Back");
         bBack.addActionListener(new java.awt.event.ActionListener() {
@@ -47,7 +47,7 @@ public class Cashier extends javax.swing.JFrame {
         });
 
         addMemberButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        addMemberButton.setText("Add Cashier");
+        addMemberButton.setText("Add Member");
         addMemberButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addMemberButtonActionPerformed(evt);
@@ -55,7 +55,7 @@ public class Cashier extends javax.swing.JFrame {
         });
 
         editMember.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        editMember.setText("Edit Cashier Data");
+        editMember.setText("Edit Member Data");
         editMember.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editMemberActionPerformed(evt);
@@ -63,7 +63,7 @@ public class Cashier extends javax.swing.JFrame {
         });
 
         listMember.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        listMember.setText("List of Cashier");
+        listMember.setText("List of Member");
         listMember.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listMemberActionPerformed(evt);
@@ -71,7 +71,7 @@ public class Cashier extends javax.swing.JFrame {
         });
 
         removeMember.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        removeMember.setText("Remove Cashier");
+        removeMember.setText("Remove Member");
         removeMember.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 removeMemberActionPerformed(evt);
@@ -93,11 +93,12 @@ public class Cashier extends javax.swing.JFrame {
                             .addComponent(addMemberButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(editMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(listMember, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(removeMember, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(166, 166, 166)
-                        .addComponent(jLabel1)))
+                            .addComponent(removeMember, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(103, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(151, 151, 151))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,45 +184,31 @@ public class Cashier extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Cashier.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Member.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Cashier.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Member.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Cashier.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Member.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Cashier.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Member.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Cashier().setVisible(true);
+                new Member().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addMemberButton;
-    private javax.swing.JButton addMemberButton1;
-    private javax.swing.JButton addMemberButton2;
     private javax.swing.JButton bBack;
     private javax.swing.JButton editMember;
-    private javax.swing.JButton editMember1;
-    private javax.swing.JButton editMember2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JButton listMember;
-    private javax.swing.JButton listMember1;
-    private javax.swing.JButton listMember2;
-    private javax.swing.JButton logOutButton1;
-    private javax.swing.JButton logOutButton2;
     private javax.swing.JButton removeMember;
-    private javax.swing.JButton removeMember1;
-    private javax.swing.JButton removeMember2;
     // End of variables declaration//GEN-END:variables
 }

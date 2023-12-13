@@ -17,9 +17,9 @@ import javax.swing.table.DefaultTableModel;
  * @author HP
  */
 public class PointOfSalesGUI extends javax.swing.JFrame {
-    String idKasir;
     String TotalHarga = "0";
     DefaultTableModel model;
+    String idKasir;
     boolean  manager;
 
     /**
@@ -27,10 +27,40 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
      */
     public PointOfSalesGUI() {
         initComponents();
+        try {
+            setAttrib();
+        } catch (SQLException ex) {
+            Logger.getLogger(PointOfSalesGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    public void setAttrib(){
-       
+    
+    public void setAttrib() throws SQLException{
+         //database connection
+        DatabaseConnection dbConnection = DatabaseConnection.getInstance();
+        Connection connection = dbConnection.getConnection();
+        
+        //declare statement
+        Statement statement = connection.createStatement();
+        
+        //take harga_barang from database
+        String user ="";
+        String m = "";
+        String query1 = "SELECT * FROM kasir WHERE log=1;";
+        ResultSet rs1 = statement.executeQuery(query1);
+        while (rs1.next()) {
+            user = rs1.getString("nama_kasir");
+            m = rs1.getString("manager");
+        }
+        if(m.equals("1")){
+            this.manager = true;
+        }
+        System.out.println(user);
+        idKasir = user;
+        tNamaKasir.setText(idKasir);
+        bKasir.setVisible(manager);
+        
     }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,6 +70,8 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelBarang = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -56,7 +88,21 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
         bKasir = new javax.swing.JButton();
         tNamaKasir = new javax.swing.JLabel();
         lAnnouncer = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        bStorage = new javax.swing.JButton();
+        bLogout = new javax.swing.JButton();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,6 +139,18 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
 
         jLabel4.setText("Member ID");
 
+        tJumlah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tJumlahActionPerformed(evt);
+            }
+        });
+
+        tMemberID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tMemberIDActionPerformed(evt);
+            }
+        });
+
         bTambah.setText("Tambah");
         bTambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,7 +180,7 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
             }
         });
 
-        bKasir.setText("Kasir");
+        bKasir.setText("Cashier");
         bKasir.setVisible(manager);
         bKasir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,7 +188,21 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Storage");
+        tNamaKasir.setText(idKasir);
+
+        bStorage.setText("Storage");
+        bStorage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bStorageActionPerformed(evt);
+            }
+        });
+
+        bLogout.setText("Log Out");
+        bLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bLogoutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -140,75 +212,72 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel3))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(77, 77, 77)
-                                .addComponent(tBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tTotalKeseluruhan, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(tNamaKasir)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(bMember, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bStorage, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bKasir, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(bKasir, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                                .addComponent(bLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel3))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tMemberID, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tJumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lAnnouncer)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(bReceipt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(tJumlah, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                                        .addComponent(tMemberID, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                                        .addComponent(bTambah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(bMember, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE))
-                .addContainerGap())
+                                    .addComponent(bReceipt, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tTotalKeseluruhan, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lAnnouncer))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(tNamaKasir))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bMember)
+                    .addComponent(bStorage)
+                    .addComponent(bKasir)
+                    .addComponent(bLogout))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
+                    .addComponent(tTotalKeseluruhan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tMemberID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(tBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tTotalKeseluruhan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tJumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tMemberID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bTambah)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bReceipt)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lAnnouncer)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                        .addComponent(tNamaKasir))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(bMember)
-                            .addComponent(bKasir))))
+                    .addComponent(bReceipt))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(tJumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bTambah))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tNamaKasir)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lAnnouncer)
                 .addContainerGap())
         );
 
@@ -221,9 +290,6 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
 
     private void bTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTambahActionPerformed
         try {
-            tNamaKasir.setText(idKasir);
-            bKasir.setVisible(manager);
-
             if (Sales.checkStock(tBarang.getText(), tJumlah.getText()) == 1){
                 //add data to database
                 Sales.addSales(idKasir, tMemberID.getText(), tBarang.getText(), tJumlah.getText());
@@ -237,7 +303,6 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
                 model = (DefaultTableModel)tabelBarang.getModel();
                 Object obj [] = {tBarang.getText(), tJumlah.getText(), th};
                 model.addRow(obj);
-                System.out.println(idKasir);
             }else{
                 lAnnouncer.setText("Not Enough Stock");
             }
@@ -249,17 +314,46 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_bTambahActionPerformed
 
     private void bMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bMemberActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_bMemberActionPerformed
 
     private void bReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bReceiptActionPerformed
         // TODO add your handling code here:
-        System.out.println(this.manager);
+        tNamaKasir.setText("pantek");
     }//GEN-LAST:event_bReceiptActionPerformed
 
     private void bKasirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bKasirActionPerformed
-        // TODO add your handling code here:
+        Cashier a = new Cashier();
+        this.dispose();
+        a.setVisible(true);
     }//GEN-LAST:event_bKasirActionPerformed
+
+    private void bStorageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bStorageActionPerformed
+        StorageGUI a = new StorageGUI();
+        this.dispose();
+        a.setVisible(true);
+    }//GEN-LAST:event_bStorageActionPerformed
+
+    private void tMemberIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tMemberIDActionPerformed
+        Member a = new Member();
+        this.dispose();
+        a.setVisible(true);
+    }//GEN-LAST:event_tMemberIDActionPerformed
+
+    private void tJumlahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tJumlahActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tJumlahActionPerformed
+
+    private void bLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLogoutActionPerformed
+        LoginGUI a = new LoginGUI();
+        try {
+            Login.logout(idKasir);
+        } catch (SQLException ex) {
+            Logger.getLogger(PointOfSalesGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.dispose();
+        a.setVisible(true);
+    }//GEN-LAST:event_bLogoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -299,15 +393,18 @@ public class PointOfSalesGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bKasir;
+    private javax.swing.JButton bLogout;
     private javax.swing.JButton bMember;
     private javax.swing.JButton bReceipt;
+    private javax.swing.JButton bStorage;
     private javax.swing.JButton bTambah;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lAnnouncer;
     private javax.swing.JTextField tBarang;
     private javax.swing.JTextField tJumlah;
