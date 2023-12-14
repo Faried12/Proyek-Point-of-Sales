@@ -4,6 +4,11 @@
  */
 package com.mycompany.pointofsales;
 
+
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author bangu
@@ -196,12 +201,16 @@ public class AddMember extends javax.swing.JFrame {
     }//GEN-LAST:event_namaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        // TODO add your handling code here:
+        ListMember.tambah(nama.getText(), tl.getText(), alamat.getText(), no.getText(),  jk.getSelectedItem().toString());
+        announcer.setText("Proses Selesai");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-
+        Cashier a = new Cashier();
+        this.dispose();
+        a.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
