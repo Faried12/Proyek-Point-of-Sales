@@ -20,7 +20,7 @@ static void tambah( String id_member, String nama_member, String no_telpon, Stri
         try{
             DatabaseConnection dbConnection = DatabaseConnection.getInstance();
             Connection connection = dbConnection.getConnection();
-            String query = "INSERT INTO data_member (id_member, nama_member, no_telpon, alamat, jenis_kelamin) VALUES (?, ?, ?, ?, ?,)";
+            String query = "INSERT INTO member (id_member, nama_member, no_telpon, alamat, jenis_kelamin) VALUES (?, ?, ?, ?, ?,)";
             PreparedStatement statement = connection.prepareStatement(query);
                     
             statement.setString(1, id_member);
@@ -40,7 +40,7 @@ static void tambah( String id_member, String nama_member, String no_telpon, Stri
         try{
             DatabaseConnection dbConnection = DatabaseConnection.getInstance();
             Connection connection = dbConnection.getConnection();
-            String query = "DELETE FROM data_member WHERE id_member = ?";
+            String query = "DELETE FROM member WHERE id_member = ?";
             PreparedStatement statement = connection.prepareStatement(query);
             
             statement.setString(1, id);
@@ -55,7 +55,7 @@ static void tambah( String id_member, String nama_member, String no_telpon, Stri
         try{
             DatabaseConnection dbConnection = DatabaseConnection.getInstance();
             Connection connection = dbConnection.getConnection();
-            String query = "UPDATE data_member SET password = ?, nama_kasir = ?,no_telpon = ?,alamat= ?, tanggal_lahir = ?, jenis_kelamin = ?,  WHERE id_member = ?";
+            String query = "UPDATE member SET password = ?, nama_kasir = ?,no_telpon = ?,alamat= ?, tanggal_lahir = ?, jenis_kelamin = ?,  WHERE id_member = ?";
             PreparedStatement statement = connection.prepareStatement(query);
 
             statement.setString(6, id_member);

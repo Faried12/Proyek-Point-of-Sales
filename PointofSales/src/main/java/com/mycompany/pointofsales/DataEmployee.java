@@ -39,7 +39,7 @@ static void tambah( String id_kasir, String password, String nama_kasir, String 
         try{
             DatabaseConnection dbConnection = DatabaseConnection.getInstance();
             Connection connection = dbConnection.getConnection();
-            String query = "DELETE FROM data_employee WHERE id_kasir = ?";
+            String query = "DELETE FROM kasir WHERE id_kasir = ?";
             PreparedStatement statement = connection.prepareStatement(query);
             
             statement.setString(1, id);
@@ -54,7 +54,7 @@ static void tambah( String id_kasir, String password, String nama_kasir, String 
         try{
             DatabaseConnection dbConnection = DatabaseConnection.getInstance();
             Connection connection = dbConnection.getConnection();
-            String query = "UPDATE data_employee SET password = ?, nama_kasir = ?,no_telpon = ?,alamat= ?, tanggal_lahir = ?, jenis_kelamin = ?,  WHERE id_kasir = ?";
+            String query = "UPDATE kasir SET password = ?, nama_kasir = ?,no_telpon = ?,alamat= ?, tanggal_lahir = ?, jenis_kelamin = ?,  WHERE id_kasir = ?";
             PreparedStatement statement = connection.prepareStatement(query);
 
             statement.setString(7, id_kasir);
