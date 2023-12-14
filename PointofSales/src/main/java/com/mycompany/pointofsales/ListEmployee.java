@@ -19,6 +19,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ListEmployee extends javax.swing.JFrame {
 
+    static void tambah(String text, String toString, String text0, String text1, String text2) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     /**
      * Creates new form ListEmployee
      */
