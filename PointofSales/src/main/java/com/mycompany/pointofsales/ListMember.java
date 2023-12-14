@@ -4,6 +4,14 @@
  */
 package com.mycompany.pointofsales;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author bangu
@@ -13,10 +21,39 @@ public class ListMember extends javax.swing.JFrame {
     /**
      * Creates new form ListMember
      */
+    
+    DefaultTableModel model;
+    
     public ListMember() {
         initComponents();
+        db();
     }
+    
+    public void db(){
+        try {
+            model = (DefaultTableModel)tabel_peng.getModel();
+            DatabaseConnection dbConnection = DatabaseConnection.getInstance();
+            Connection connection = dbConnection.getConnection();
+            String query = "SELECT * FROM `Member`";
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+            while (rs.next()) {
+                String id = rs.getString("id_member");
+                String nama = rs.getString("nama_member");
+                String number_phone = rs.getString("no_telpon");
+                String alamat = rs.getString("alamat");
+                String tanggal = rs.getString("tanggal_lahir");
+                String kelamin = rs.getString("jenis_kelamin");
+                
+                Object obj [] = {id, nama, number_phone, alamat, tanggal, kelamin};
+                model.addRow(obj);
+            }
 
+        } catch (SQLException ex) {
+            Logger.getLogger(ListMember.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
