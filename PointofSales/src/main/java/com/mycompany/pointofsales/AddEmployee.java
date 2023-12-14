@@ -4,11 +4,6 @@
  */
 package com.mycompany.pointofsales;
 
-
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  *
  * @author bangu
@@ -197,16 +192,12 @@ public class AddEmployee extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        ListEmployee.tambah(nama.getText(), jk.getSelectedItem().toString(), tl.getText(), alamat.getText(), no.getText());
-        announcer.setText("Proses Selesai");
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       // TODO add your handling code here:
-        Cashier a = new Cashier();
-        this.dispose();
-        a.setVisible(true);
+        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void namaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaActionPerformed
