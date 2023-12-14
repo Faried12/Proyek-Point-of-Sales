@@ -4,6 +4,15 @@
  */
 package com.mycompany.pointofsales;
 
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author bangu
@@ -13,8 +22,38 @@ public class ListEmployee extends javax.swing.JFrame {
     /**
      * Creates new form ListEmployee
      */
+        DefaultTableModel model;
+        
     public ListEmployee() {
         initComponents();
+        db();
+    }
+    
+    public void db(){
+        try {
+            model = (DefaultTableModel)tabel_peng.getModel();
+            DatabaseConnection dbConnection = DatabaseConnection.getInstance();
+            Connection connection = dbConnection.getConnection();
+            String query = "SELECT * FROM `kasir`";
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+            while (rs.next()) {
+                String id = rs.getString("id_kasir");
+                String password = rs.getString("password");
+                String nama = rs.getString("nama_kasir");
+                String telpon = rs.getString("no_telpon");
+                String alamat = rs.getString("alamat");
+                String tanggal = rs.getString("tanggal_lahir");
+                String jenis_kelamin = rs.getString("jenis_kelamin");
+                
+                Object obj [] = {id, password, nama, telpon, alamat, tanggal, jenis_kelamin};
+                model.addRow(obj);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ListEmployee.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     /**
@@ -26,21 +65,71 @@ public class ListEmployee extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabel_peng = new javax.swing.JTable();
+        jButton5 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        tabel_peng.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID Kasir", "Password", "Nama Kasir", "No Telpon", "Alamat", "Tanggal Lahir", "Jenis Kelamin"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tabel_peng);
+
+        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButton5.setText("Kembali");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton5)
+                        .addContainerGap(710, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 782, Short.MAX_VALUE)
+                        .addGap(21, 21, 21))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        Cashier a = new Cashier();
+        this.dispose();
+        a.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +167,8 @@ public class ListEmployee extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tabel_peng;
     // End of variables declaration//GEN-END:variables
 }

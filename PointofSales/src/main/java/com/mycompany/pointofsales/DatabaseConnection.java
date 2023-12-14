@@ -34,7 +34,8 @@ public class DatabaseConnection {
         String url = "jdbc:mysql://localhost:3306/point_of_sell";
         String username = "root";
         String password = "";
-
+        Connection connection = DriverManager.getConnection(url, username, password);
+        
         return DriverManager.getConnection(url, username, password);
     }
 }
