@@ -154,7 +154,7 @@ public class Cashier extends javax.swing.JFrame {
 
     private void listMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listMemberActionPerformed
         // TODO add your handling code here:
-        ListMember a = new ListMember();
+        ListEmployee a = new ListEmployee();
         this.dispose();
         a.setVisible(true);
     }//GEN-LAST:event_listMemberActionPerformed
