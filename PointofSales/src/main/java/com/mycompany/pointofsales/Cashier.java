@@ -147,7 +147,7 @@ public class Cashier extends javax.swing.JFrame {
 
     private void editMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editMemberActionPerformed
         // TODO add your handling code here:
-        AddEmployee a = new AddEmployee ();
+        EditEmployeeData a = new EditEmployeeData();
         this.dispose();
         a.setVisible(true);
     }//GEN-LAST:event_editMemberActionPerformed
