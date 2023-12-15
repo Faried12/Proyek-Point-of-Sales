@@ -140,14 +140,14 @@ public class Cashier extends javax.swing.JFrame {
 
     private void addMemberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMemberButtonActionPerformed
         // TODO add your handling code here:
-        AddMember a = new AddMember();
+        AddEmployee a = new AddEmployee();
         this.dispose();
         a.setVisible(true);
     }//GEN-LAST:event_addMemberButtonActionPerformed
 
     private void editMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editMemberActionPerformed
         // TODO add your handling code here:
-        EditEmployee a = new EditEmployee ();
+        AddEmployee a = new AddEmployee ();
         this.dispose();
         a.setVisible(true);
     }//GEN-LAST:event_editMemberActionPerformed
