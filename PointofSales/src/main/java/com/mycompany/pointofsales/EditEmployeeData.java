@@ -209,7 +209,7 @@ public class EditEmployeeData extends javax.swing.JFrame {
     }//GEN-LAST:event_namaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+       DataEmployee.update(nama.getText(), nama1.getText(), jk.getSelectedItem().toString(), alamat.getText(), no.getText(), no1.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

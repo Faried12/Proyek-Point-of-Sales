@@ -39,7 +39,7 @@ public class RemoveMember extends javax.swing.JFrame {
         jLabel8.setText("Remove Member");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel9.setText("ID Buku");
+        jLabel9.setText("ID Member ");
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton2.setText("OK");
