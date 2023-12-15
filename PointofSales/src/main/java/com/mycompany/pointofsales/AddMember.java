@@ -212,7 +212,7 @@ public class AddMember extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Cashier a = new Cashier();
+        Member a = new Member();
         this.dispose();
         a.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
