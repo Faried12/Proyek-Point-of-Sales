@@ -38,7 +38,7 @@ public class ListMember extends javax.swing.JFrame {
             model = (DefaultTableModel)tabel_peng.getModel();
             DatabaseConnection dbConnection = DatabaseConnection.getInstance();
             Connection connection = dbConnection.getConnection();
-            String query = "SELECT * FROM `Member`";
+            String query = "SELECT * FROM `member`";
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {

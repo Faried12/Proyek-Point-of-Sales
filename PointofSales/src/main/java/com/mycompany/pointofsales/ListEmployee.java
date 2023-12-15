@@ -26,16 +26,16 @@ public class ListEmployee extends javax.swing.JFrame {
     /**
      * Creates new form ListEmployee
      */
-        DefaultTableModel model;
+        DefaultTableModel model2;
         
     public ListEmployee() {
         initComponents();
-        db();
+        dc();
     }
     
-    public void db(){
+    public void dc(){
         try {
-            model = (DefaultTableModel)tabel_peng.getModel();
+            model2 = (DefaultTableModel)tabel_peng.getModel();
             DatabaseConnection dbConnection = DatabaseConnection.getInstance();
             Connection connection = dbConnection.getConnection();
             String query = "SELECT * FROM `kasir`";
@@ -51,7 +51,7 @@ public class ListEmployee extends javax.swing.JFrame {
                 String jenis_kelamin = rs.getString("jenis_kelamin");
                 
                 Object obj [] = {id, password, nama, telpon, alamat, tanggal, jenis_kelamin};
-                model.addRow(obj);
+                model2.addRow(obj);
             }
 
         } catch (SQLException ex) {

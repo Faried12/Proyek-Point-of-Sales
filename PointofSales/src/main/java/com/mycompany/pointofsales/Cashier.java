@@ -147,7 +147,7 @@ public class Cashier extends javax.swing.JFrame {
 
     private void editMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editMemberActionPerformed
         // TODO add your handling code here:
-        EditMember a = new EditMember();
+        EditEmployee a = new EditEmployee ();
         this.dispose();
         a.setVisible(true);
     }//GEN-LAST:event_editMemberActionPerformed
@@ -161,7 +161,7 @@ public class Cashier extends javax.swing.JFrame {
 
     private void removeMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeMemberActionPerformed
         // TODO add your handling code here:
-        RemoveMember a = new RemoveMember();
+        RemoveEmployee a = new RemoveEmployee();
         this.dispose();
         a.setVisible(true);
     }//GEN-LAST:event_removeMemberActionPerformed
